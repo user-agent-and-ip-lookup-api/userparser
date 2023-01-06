@@ -1,21 +1,24 @@
 # User Agent Parser
-**UserParser** is a user Agent parser API that transforms user agent strings into rich metadata and usage analytics.
-To Detect any Browser, OS, Device and Crawler in Real-Time with our Secure User-Agent String Lookup API you have to Sign up and start getting Parsed User Agent data instantly.
+**UserParser** is a user Agent parser & IP lookup API that transforms user agent strings into rich metadata and usage analytics.
+Sign up and start receiving parsed User Agent & ip-address data instantly to detect country, Browser, OS, Device, and Crawler in Real-Time with our Secure User-Agent string & IP Lookup API.
 
-This Free User Agent Parser allows developers to detect what type of device a user is using. To help them to create more engaging experiences for users.
+This free User Agent parser and IP lookup tool enables developers to determine what type of device a user is using and where he is making the request. To assist them in creating more engaging user experiences.
 
-With this tool, you can easily parse user agents and extract information about the device type, device name, device brand, device viewport width, device viewport height, operating system name, operating system version browser name, browser version, crawler name, crawler category, crawler owner, crawler URL, etc...
+With this tool, you can easily parse user agents and extract information such as device type, device name, device brand, device viewport width, device viewport height, operating system name, operating system version, browser name, browser version, crawler name, crawler category, crawler owner, crawler URL, and so on.
 
+You can easily perform an IP lookup with this tool and extract information such as country name, country code, calling code, currency code, capital city, continent name and continent code, and so on.
 
 # Features & Integration
+* **Country name** It can assist you in determining the visitor country so that you can display your content based on the user's location.
 * **Device viewport:** It will provide you the user's device viewport (height and width), so you can customize your UX interface. 
 * **Device name:** Unlike other providers This User Agent Parser API has incredible good in returning user device name (especially if the user is using Smartphone), It informs you his/her device name is Infinix Note 10 instead of only Note 10 (helps you prevent confusions from a lot of other brands Note 10).
 * **Device type:** It will inform you the device type which is weight it is Mobile, Tablet, Computer, or Crawler effectively. So you can customize you web design better.
 * **Crawler Detection:** is accurate for most of the crawlers out there. You can get Crawler name, crawler Owner, crawler category (Search-engine, Scrapers, Monitors, Marketing etc...) Crawler URL and crawler last seen. So you can differ your crawlers as well as your real users.
-* **Full parsing:** Parsing User Agent in all Plans is equal it gives same info regardless of plans except limitations per month.
+* **Full Lookup:** Parsing User Agent and IP address lookup in all Plans is the same; it returns the same information regardless of plan, with the exception of API call limits per day and month.
+** All in one API call** You can get all the data with a single API call. You can send your user's IP address or/and user-agent for lookup and then get your data all in one request.
 * **JSON & XML API:** The userparser API is capable of delivering API results in JSON or XML format.
 * **Free for Ever:** It allows you to use it for free for up to 10,000 API calls per month for free for ever, so you can decide to upgrade or remain in the Free plan. You have an option to upgrade, downgrade and even cancel your subscription at any time, And it have a custom plans if you want too.
-* **Customer support:** It have a great fast reply Email support from its developers even in the Free plan and have Preferred and Dedicated support in the higher plan.
+* **Customer support:** Even in the Free plan, it has excellent email support from its developers, and the higher plans have Preferred and Dedicated support.
 # Documentation
 An in-depth API documentation, including interactive code examples and extensive descriptions can be found at https://www.userparser.com/docs/user-agent-parser-api-documentation-v1.0.0
 ## PHP code Example
@@ -24,12 +27,21 @@ $json_url = "https://api.userparser.com/api/1.0.0/detect?ua=YOUR_USER_AGENT&api_
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 curl_setopt($ch, CURLOPT_URL, $json_url);
 $result = curl_exec($ch);
 curl_close($ch);
 $json_data = json_decode($result);
 if($json_data->info->status == "success"){
-    $brawserName = $json_data->browser->name;
+    $real_country = $json_data->location->countryName;
+    $countryCode2 = $json_data->location->countryCode2;
+    $countryCode3 = $json_data->location->countryCode3;
+    $capitalCity = $json_data->location->capitalCity;
+    $continentName = $json_data->location->continentName;
+    $continentCode = $json_data->location->continentCode;
+    $callingCode = $json_data->location->callingCode;
+    $currencyCode = $json_data->location->currencyCode;
+    $browserName =$json_data->browser->name;
     $browserVersion = $json_data->browser->version;
     $browserFullVersion = $json_data->browser->fullVersion;
     $renderEngine = $json_data->browser->engine;
@@ -37,15 +49,14 @@ if($json_data->info->status == "success"){
     $osVersion = $json_data->operatingSystem->version;
     $deviceName = $json_data->device->name;
     $deviceType = $json_data->device->type;
-    $deviceBrand = $json_data->device->brand;
-    $screenWidth = $json_data->device->screenResolutionWidth;
-    $screenHeight = $json_data->device->screenResolutionHeight;
-    $viewportScreenWidth = $json_data->device->viewportScreenWidth;
-    $viewportScreenHeight = $json_data->device->viewportScreenHeight;
-    $languageDetection = $json_data->device->language;
     $isTouchScreen = $json_data->device->isTouchScreen;
-    $isMobile = $json_data->device->isMobile;
-    $apiResultMessage = $json_data->info->message;
+    $device_brand = $json_data->device->brand;
+    $device_width = $json_data->device->screenResolutionWidth;
+    $device_height = $json_data->device->screenResolutionHeight;
+    $viewport_screen_width = $json_data->device->viewportWidth;
+    $viewport_screen_height = $json_data->device->viewportHeight;
+    $languageDetection = $json_data->device->language;
+    $is_mobile = $json_data->device->isMobile;
     $userAgent = $json_data->info->ua;
     $isCrawler = $json_data->crawler->isCrawler;
     $crawlerName = $json_data->crawler->name;
@@ -60,7 +71,7 @@ if($json_data->info->status == "success"){
   {
     "info": {
         "status": "success",
-        "message": "The user agent was parsed successfully.",
+        "message": "The user agent was parsed and ip lookup was completed successfully.",
         "ua": "Mozilla/5.0 (Linux; Android 11; SM-A505F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.101 Mobile Safari/537.36"
     },
     "browser": {
@@ -92,10 +103,21 @@ if($json_data->info->status == "success"){
         "category": null,
         "url": null,
         "lastSeen": null
+    },
+        "location": {
+        "countryName": "Italy",
+        "countryCode2": "IT",
+        "countryCode3": "ITA",
+        "capitalCity": "Rome",
+        "continentName": "Europe",
+        "continentCode": "EU",
+        "callingCode": "+39",
+        "currencyCode": "EUR"
     }
 }
+  
 ```
-Continue reading an in-depth API documentation [here](https://www.userparser.com/docs/user-agent-parser-api-documentation-v1.0.0).
+Continue reading an in-depth API documentation [here](https://www.userparser.com/docs/user-agent-and-geoip-lookup-api-v1.0.1).
 # Customer Support
 
 Need any assistance? Get in touch with Customer Support
