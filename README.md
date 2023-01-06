@@ -23,7 +23,7 @@ You can easily perform an IP lookup with this tool and extract information such 
 An in-depth API documentation, including interactive code examples and extensive descriptions can be found at (https://www.userparser.com/docs/user-agent-and-geoip-lookup-api-v1.0.1)
 ## PHP code Example
 ```php
-$json_url = "https://api.userparser.com/api/1.0.0/detect?ua=YOUR_USER_AGENT&api_key=YOUR_API_KEY";
+$json_url = "https://api.userparser.com/api/1.0.1/detect?ua=YOUR_USER_AGENT&ip=$ip_address&api_key=YOUR_API_KEY";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
