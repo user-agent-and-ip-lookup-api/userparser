@@ -1,4 +1,4 @@
-# User Agent Parser and IP Address Lookup
+# User Agent Parser and IP Address Lookup API
 **UserParser** is a user Agent parser & IP lookup API that transforms user agent strings into rich metadata and usage analytics.
 Sign up and start receiving parsed User Agent & ip-address data instantly to detect country, Browser, OS, Device, and Crawler in Real-Time with our Secure User-Agent string & IP Lookup API.
 
