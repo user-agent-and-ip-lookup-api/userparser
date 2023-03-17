@@ -19,7 +19,7 @@ You can easily perform an IP-address lookup with this tool and extract informati
 * **Free for Ever:** It allows you to use it for free for up to 10,000 API calls per month for free for ever, so you can decide to upgrade or remain in the Free plan. You have an option to upgrade, downgrade and even cancel your subscription at any time, And it have a custom plans if you want too.
 * **Customer support:** Even in the free plan, it has excellent email support from its developers, and the higher plans have preferred and dedicated support.
 # Documentation
-An in-depth API documentation, including interactive code examples and extensive descriptions can be found at (https://www.userparser.com/docs/user-agent-and-geoip-lookup-api-v1.0.1)
+An in-depth API documentation, including interactive code examples and extensive descriptions can be found at (https://www.userparser.com/docs/user-agent-and-geoip-lookup-api-v1.1)
 ## PHP code Example
 ```php
 $json_url = "https://api.userparser.com/1.1/detect?ua=YOUR_USER_AGENT&ip=$ip_address&api_key=YOUR_API_KEY";
