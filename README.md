@@ -71,7 +71,8 @@ if($json_data->info->status == "success"){
     "info": {
         "status": "success",
         "message": "The user agent was parsed and ip lookup was completed successfully.",
-        "ua": "Mozilla/5.0 (Linux; Android 11; SM-A505F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.101 Mobile Safari/537.36"
+        "ua": "Mozilla/5.0 (Linux; Android 11; SM-A505F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.101 Mobile Safari/537.36",
+        "ip": "80.207.161.200"
     },
     "browser": {
         "name": "Chrome",
